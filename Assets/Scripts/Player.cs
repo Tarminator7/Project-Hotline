@@ -1,28 +1,48 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float moveSpeed = 400f;
-    private Vector2 movement;
-    private Vector2 mousePos;
-    private Vector2 direction;
+    [SerializeField] private float moveSpeed = 3f;
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
-
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = mousePos - (Vector2)transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        movement.Normalize();
+        LookAtMouse();
+        rb.linearVelocity = moveInput * moveSpeed;
     }
 
-    private void FixedUpdate()
+    public void Move(InputAction.CallbackContext context)
     {
-        rb.linearVelocity = movement * Time.fixedDeltaTime * moveSpeed;
+        moveInput = context.ReadValue<Vector2>();
     }
+    private void LookAtMouse()
+    {
+        Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
+    }
+
+    // This is testing new mouse control, not working correctly yet
+    //private void OnLook(InputValue value)
+    //{
+    //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(value.Get<Vector2>());
+    //    LookAt(mousePosition);
+    //}
+
+    //private void LookAt(Vector3 target)
+    //{
+    //    float lookAngle = AngleBetweenTwoPoints(transform.position, target) + 90;
+    //}
+
+    //private float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    //{
+    //    return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+    //}
 }
