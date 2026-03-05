@@ -1,3 +1,7 @@
+# To-Do List:
+- Main Menu
+- Pause menu
+
 # Top-down shooter plan
 
 ## Top-down shooter – Game Design Overview
