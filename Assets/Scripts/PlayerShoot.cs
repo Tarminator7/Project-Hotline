@@ -8,26 +8,40 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunOffset;
-    [SerializeField] float timeBetweenShots;
+    [SerializeField] float timeBetweenShots = 0.1f;
 
-    [SerializeField] private float bulletDespawnTimer = 1.0f;
+    private bool rapidFire;
+    private float lastFireTime;
+
+    [SerializeField] private float bulletDespawnTimer = 3.0f;
 
     private Rigidbody2D rb;
 
-    private void Awake()
+    void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
+        if (rapidFire)
+        {
+            float timeSinceLastFire = Time.time - lastFireTime;
+
+            if (timeSinceLastFire >= timeBetweenShots)
+            {
+                Shoot();
+                lastFireTime = Time.time;
+            }
+        }
     }
 
     private void OnEnable()
     {
         fireActionReference.action.Enable();
+        fireActionReference.action.started += OnFirePerformed;
         fireActionReference.action.performed += OnFirePerformed;
         fireActionReference.action.canceled += OnFireCancelled;
     }
 
     private void OnDisable()
     {
+        fireActionReference.action.started -= OnFirePerformed;
         fireActionReference.action.performed -= OnFirePerformed;
         fireActionReference.action.canceled -= OnFireCancelled;
         fireActionReference.action.Disable();
@@ -35,11 +49,12 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnFirePerformed(InputAction.CallbackContext context)
     {
-        Shoot();
+        rapidFire = true;
     }
 
     private void OnFireCancelled(InputAction.CallbackContext context)
     {
+        rapidFire = false;
     }
 
     private void Shoot()

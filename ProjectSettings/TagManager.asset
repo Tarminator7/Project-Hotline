@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
@@ -44,6 +44,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1808279977
+    locked: 0
+  - name: Background Objects
+    uniqueID: 3736846065
     locked: 0
   - name: Collectable
     uniqueID: 585507101

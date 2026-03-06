@@ -2,17 +2,27 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float enemySpeed = 3.0f;
+    [SerializeField] private float enemySpeed = 2.0f;
     [SerializeField] private float rotationSpeed = 1.0f;
 
     private Rigidbody2D rb;
     private PlayerAwarenessController playerAwarenessController;
     private Vector2 targetDirection;
+    private float changeDirectionCooldown;
+    [SerializeField] private float obstacleCheckCircleRadius;
+    [SerializeField] private float obstacleCheckDistance;
+    [SerializeField] LayerMask obstacleLayerMask;
+
+    private RaycastHit2D[] obstacleCollisions;
+    private float obstacleAvoidanceCooldown;
+    private Vector2 obstacleAvoidanceTargetDirection;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerAwarenessController = GetComponent<PlayerAwarenessController>();
+        targetDirection = transform.up;
+        obstacleCollisions = new RaycastHit2D[10];
     }
 
     private void FixedUpdate()
@@ -24,23 +34,71 @@ public class Enemy : MonoBehaviour
 
     private void UpdateTargetDirection()
     {
+        HandleRandomDirectionChange();
+        HandlePlayerTargeting();
+        HandleObstacles();
+    }
+
+    private void HandleRandomDirectionChange()
+    {
+        changeDirectionCooldown -= Time.deltaTime;
+        if (changeDirectionCooldown <= 0)
+        {
+            float angleChange = Random.Range(-90f, 90f);
+            Quaternion rotation = Quaternion.AngleAxis(angleChange, transform.forward);
+            targetDirection = rotation * targetDirection;
+
+            changeDirectionCooldown = Random.Range(1f, 5f);
+        }
+    }
+
+    private void HandlePlayerTargeting()
+    {
         if (playerAwarenessController.AwareOfPlayer)
         {
             targetDirection = playerAwarenessController.DirectionToPlayer;
         }
-        else
+    }
+
+    private void HandleObstacles()
+    {
+        obstacleAvoidanceCooldown -= Time.deltaTime;
+
+        var contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(obstacleLayerMask);
+        int numberOfCollisions = Physics2D.CircleCast(
+            transform.position,
+            obstacleCheckCircleRadius,
+            transform.up,
+            contactFilter,
+            obstacleCollisions,
+            obstacleCheckDistance);
+
+        for (int i = 0; i < numberOfCollisions; i++)
         {
-            targetDirection = Vector2.zero;
+            var obstacleCollision = obstacleCollisions[i];
+
+            if (obstacleCollision.collider.gameObject == gameObject)
+            {
+                continue;
+            }
+
+            if (obstacleAvoidanceCooldown <= 0)
+            {
+                obstacleAvoidanceTargetDirection = obstacleCollision.normal;
+                obstacleAvoidanceCooldown = 0.5f;
+            }
+
+            var targetRotation = Quaternion.LookRotation(transform.forward, obstacleAvoidanceTargetDirection);
+            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            
+            targetDirection = rotation * Vector2.up;
+            break;
         }
     }
 
     private void RotateTowardsTarget()
     {
-        if (targetDirection == Vector2.zero)
-        {
-            return;
-        }
-
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
@@ -49,13 +107,6 @@ public class Enemy : MonoBehaviour
 
     private void SetVelocity()
     {
-        if (targetDirection == Vector2.zero)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-        else
-        {
-            rb.linearVelocity = transform.up * enemySpeed;
-        }
+        rb.linearVelocity = transform.up * enemySpeed;
     }
 }

@@ -2,23 +2,17 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = 10f;
+    [SerializeField] private Transform cameraFollowTarget;
+    [SerializeField] private float displacementMultiplier = 0.15f;
+    [SerializeField] private float zPosition = -10;
 
-    void LateUpdate()
+    private void Update()
     {
-        if (target == null) return;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 cameraDisplacement = (mousePosition - cameraFollowTarget.position) * displacementMultiplier;
 
-        Vector3 newPosition = new Vector3(
-            target.position.x,
-            target.position.y,
-            transform.position.z
-        );
-
-        transform.position = Vector3.Lerp(
-            transform.position,
-            newPosition,
-            smoothSpeed * Time.deltaTime
-        );
+        Vector3 finalCameraPosition = cameraFollowTarget.position + cameraDisplacement;
+        finalCameraPosition.z = zPosition;
+        transform.position = finalCameraPosition;
     }
 }
