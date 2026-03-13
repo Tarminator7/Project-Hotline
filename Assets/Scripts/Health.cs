@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,10 +18,9 @@ public class Health : MonoBehaviour
     public bool IsInvincible { get; set; }
 
     public UnityEvent OnDied;
-
     public UnityEvent OnDamaged;
-
     public UnityEvent OnHealthChanged;
+    public UnityEvent OnGameOver;
 
     public void TakeDamage(float damageAmount)
     {
@@ -46,6 +46,7 @@ public class Health : MonoBehaviour
         if (currentHealth == 0)
         {
             OnDied.Invoke();
+            StartCoroutine(GameOver());
         }
         else
         {
@@ -68,5 +69,15 @@ public class Health : MonoBehaviour
         {
             currentHealth = maximumHealth;
         }
+    }
+
+    public IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(1);
+        // Option 1, Game Over screen during gameplay
+        OnGameOver.Invoke();
+
+        // Option 2, own Game Over screen
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }
