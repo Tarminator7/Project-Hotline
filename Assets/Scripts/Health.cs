@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float maximumHealth;
+    [SerializeField] private float currentHealth = 100;
+    [SerializeField] private float maximumHealth = 100;
 
     public float RemainingHealthPercentage
     {
@@ -54,22 +54,34 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void AddHealth(float amountToAdd)
-    {
-        if (currentHealth == maximumHealth)
-        {
-            return;
-        }
+    //public void SetHealth(float amount)
+    //{
+    //    currentHealth = amount;
 
-        currentHealth += amountToAdd;
+    //    if (currentHealth > maximumHealth)
+    //    {
+    //        currentHealth = maximumHealth;
+    //    }
 
-        OnHealthChanged.Invoke();
+    //    OnHealthChanged.Invoke();
+    //}
 
-        if (currentHealth > maximumHealth)
-        {
-            currentHealth = maximumHealth;
-        }
-    }
+    //public void AddHealth(float amountToAdd)
+    //{
+    //    if (currentHealth == maximumHealth)
+    //    {
+    //        return;
+    //    }
+
+    //    currentHealth += amountToAdd;
+
+    //    OnHealthChanged.Invoke();
+
+    //    if (currentHealth > maximumHealth)
+    //    {
+    //        currentHealth = maximumHealth;
+    //    }
+    //}
 
     public IEnumerator GameOver()
     {

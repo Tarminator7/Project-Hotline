@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 2431150570663315629}
   - component: {fileID: 4710130133367719026}
   - component: {fileID: 7907889850168422289}
+  - component: {fileID: -1949631065865039326}
   - component: {fileID: 7977730089791455759}
   - component: {fileID: 3307958478769176766}
-  - component: {fileID: 1194080307662206673}
+  - component: {fileID: -4989955581143025798}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +115,30 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.19
+--- !u!114 &-1949631065865039326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809860270924544491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a902013d34c5384b81bf08f1a3be198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7977730089791455759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,13 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02f3798e2d4c6f408988ac7f87366dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  enemySpeed: 2
-  rotationSpeed: 300
-  obstacleCheckCircleRadius: 0.45
-  obstacleCheckDistance: 1
-  obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
+  enemyAttributes: {fileID: 11400000, guid: 1629bc39597a08c4fb4b454511b5a5af, type: 2}
 --- !u!114 &3307958478769176766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6807c557ce12b43a7f4fe89d01bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAwarenessController
-  playerAwarenessDistance: 5
---- !u!114 &1194080307662206673
+  enemyAttributes: {fileID: 11400000, guid: 1629bc39597a08c4fb4b454511b5a5af, type: 2}
+--- !u!114 &-4989955581143025798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,10 +174,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5809860270924544491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125e31a5f65417d48ab41247d3ecebe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e297157ab1b9c4aa31fc9259a3346d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Damage
-  damageAmount: 10
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
+  enemyAttributes: {fileID: 11400000, guid: 1629bc39597a08c4fb4b454511b5a5af, type: 2}
 --- !u!1 &8624123465959306850
 GameObject:
   m_ObjectHideFlags: 0

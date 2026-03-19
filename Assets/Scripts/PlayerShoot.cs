@@ -3,17 +3,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
+    [SerializeField] WeaponAttributes weaponAttributes;
     [SerializeField] private InputActionReference fireActionReference;
-
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunOffset;
-    [SerializeField] float timeBetweenShots = 0.1f;
 
     private bool rapidFire;
     private float lastFireTime;
-
-    [SerializeField] private float bulletDespawnTimer = 3.0f;
 
     private Rigidbody2D rb;
 
@@ -23,7 +18,7 @@ public class PlayerShoot : MonoBehaviour
         {
             float timeSinceLastFire = Time.time - lastFireTime;
 
-            if (timeSinceLastFire >= timeBetweenShots)
+            if (timeSinceLastFire >= weaponAttributes.TimeBetweenShots)
             {
                 Shoot();
                 lastFireTime = Time.time;
@@ -59,10 +54,10 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, gunOffset.position, transform.rotation);
+        GameObject bullet = Instantiate(weaponAttributes.BulletPrefab, gunOffset.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-        rb.linearVelocity = bulletSpeed * transform.up;
-        Destroy(bullet.gameObject, bulletDespawnTimer);
+        rb.linearVelocity = weaponAttributes.BulletSpeed * transform.up;
+        Destroy(bullet.gameObject, weaponAttributes.BulletDespawnTimer);
     }
 }

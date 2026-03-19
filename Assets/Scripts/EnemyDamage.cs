@@ -1,9 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Damage : MonoBehaviour
+public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] private float damageAmount;
+    [SerializeField] EnemyAttributes enemyAttributes;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -11,7 +10,7 @@ public class Damage : MonoBehaviour
         {
             var health = collision.gameObject.GetComponent<Health>();
 
-            health.TakeDamage(damageAmount);
+            health.TakeDamage(enemyAttributes.EnemyDamageAmount);
         }
     }
 }

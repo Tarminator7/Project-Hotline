@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float enemySpeed = 2.0f;
-    [SerializeField] private float rotationSpeed = 1.0f;
+    [SerializeField] EnemyAttributes enemyAttributes;
 
     private Rigidbody2D rb;
     private PlayerAwarenessController playerAwarenessController;
     private Vector2 targetDirection;
     private float changeDirectionCooldown;
-    [SerializeField] private float obstacleCheckCircleRadius;
-    [SerializeField] private float obstacleCheckDistance;
-    [SerializeField] LayerMask obstacleLayerMask;
 
     private RaycastHit2D[] obstacleCollisions;
     private float obstacleAvoidanceCooldown;
@@ -65,14 +61,14 @@ public class Enemy : MonoBehaviour
         obstacleAvoidanceCooldown -= Time.deltaTime;
 
         var contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(obstacleLayerMask);
+        contactFilter.SetLayerMask(enemyAttributes.ObstacleLayerMask);
         int numberOfCollisions = Physics2D.CircleCast(
             transform.position,
-            obstacleCheckCircleRadius,
+            enemyAttributes.ObstacleCheckCircleRadius,
             transform.up,
             contactFilter,
             obstacleCollisions,
-            obstacleCheckDistance);
+            enemyAttributes.ObstacleCheckDistance);
 
         for (int i = 0; i < numberOfCollisions; i++)
         {
@@ -90,7 +86,7 @@ public class Enemy : MonoBehaviour
             }
 
             var targetRotation = Quaternion.LookRotation(transform.forward, obstacleAvoidanceTargetDirection);
-            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemyAttributes.RotationSpeed * Time.deltaTime);
             
             targetDirection = rotation * Vector2.up;
             break;
@@ -100,13 +96,13 @@ public class Enemy : MonoBehaviour
     private void RotateTowardsTarget()
     {
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemyAttributes.RotationSpeed * Time.deltaTime);
 
         rb.SetRotation(rotation);
     }
 
     private void SetVelocity()
     {
-        rb.linearVelocity = transform.up * enemySpeed;
+        rb.linearVelocity = transform.up * enemyAttributes.Speed;
     }
 }
