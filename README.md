@@ -1,9 +1,15 @@
 # To-Do List:
+### Main priority:
 - Pause menu
 - Imrpvoe Game Over menu
 - Improve StageVictoryCondition script
 - Add The End scene
 
+### Secondary priority:
+- New weapon + bullet prefab + stats (scriptable objects)
+- Shop
+- New sprite for player and weapon
+- Script to swap sprite and weapon
 
 # Top-down shooter plan
 
