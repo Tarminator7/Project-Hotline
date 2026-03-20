@@ -8017,6 +8017,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2583145567975960774, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: b18fafbd4f1dc044d9773dcfd1a0a4d7, type: 2}
     - target: {fileID: 5327201527038803126, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.02284

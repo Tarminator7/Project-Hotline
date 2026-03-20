@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb10fea4f822b5f479538a131d1e9bbd, type: 3}
   m_Name: Scene Settings
   m_EditorClassIdentifier: Assembly-CSharp::SceneSettings
-  <SceneNumber>k__BackingField: 2
+  SceneNumber: 0

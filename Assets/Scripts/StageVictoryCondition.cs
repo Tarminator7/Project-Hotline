@@ -5,6 +5,7 @@ public class StageVictoryCondition : MonoBehaviour
 {
     [SerializeField] SceneSettings sceneSettings;
     private GameObject[] enemies;
+    private bool hasLoaded = false;
 
     void Start()
     {
@@ -13,35 +14,28 @@ public class StageVictoryCondition : MonoBehaviour
     }
 
     void Update()
+{
+    if (!hasLoaded && AllEnemiesDefeated())
     {
-        if (AllEnemiesDefeated())
-        {
-            LoadNewScene();
-        }
+        hasLoaded = true;
+        LoadNewScene();
     }
+}
 
-    bool AllEnemiesDefeated()
-    {
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy != null)
-            {
-                return false; // At least one enemy is still alive
-            }
-        }
-        return true; // All enemies are defeated
+bool AllEnemiesDefeated()
+{
+    return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
+}
 
-    }
+   private void LoadNewScene()
+{
+    sceneSettings.SceneNumber++; // Grows the scene number
+     Debug.Log("SceneNumber nyt: " + sceneSettings.SceneNumber);
+     int maxScenes = SceneManager.sceneCountInBuildSettings;
 
+    SceneManager.LoadScene(sceneSettings.SceneNumber); // Loads the new scene based on the updated scene number
 
-    private void Shop()
-    {
-        //Here to add code go to shop after stage clear
-    }
+    // Shop: SceneManager.LoadScene("ShopScene"); Replace "ShopScene" with the actual name of your shop scene when it is ready.
 
-    private void LoadNewScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //SceneManager.LoadScene(sceneSettings.SceneNumber); // FIX THIS!!!
-    }
+}
 }
