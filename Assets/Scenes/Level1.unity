@@ -750,33 +750,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738064213}
     - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
-      propertyPath: OnGameOver.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
       propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1738064214}
-    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
-      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateHealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096595408477237299, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4333440685336401383, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
-      propertyPath: OnGameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1738064213}
-    - target: {fileID: 4333440685336401383, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
-      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1738064214}
-    - target: {fileID: 4333440685336401383, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
-      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateHealthBar
-      objectReference: {fileID: 0}
     - target: {fileID: 5327201527038803126, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.06
@@ -3184,8 +3160,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 2133824365}
   - {fileID: 1829076019}
-  - {fileID: 1660168549}
   - {fileID: 1738064212}
+  - {fileID: 1660168549}
   - {fileID: 180420205}
   - {fileID: 1575615012}
   - {fileID: 522368690}

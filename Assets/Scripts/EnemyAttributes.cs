@@ -5,7 +5,6 @@ public class EnemyAttributes : ScriptableObject
 {
     [field: SerializeField] public float Speed { get; private set; }
     [field: SerializeField] public float RotationSpeed { get; private set; }
-    [field: SerializeField] public float Health { get; private set; }
     [field: SerializeField] public float PlayerAwarenessDistance { get; private set; }
     [field: SerializeField] public float EnemyDamageAmount { get; private set; }
     [field: SerializeField] public float ObstacleCheckCircleRadius { get; private set; }

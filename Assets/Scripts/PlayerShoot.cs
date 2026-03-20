@@ -54,7 +54,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(weaponAttributes.BulletPrefab, gunOffset.position, transform.rotation);
+        UnityEngine.GameObject bullet = Instantiate(weaponAttributes.BulletPrefab, gunOffset.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         rb.linearVelocity = weaponAttributes.BulletSpeed * transform.up;

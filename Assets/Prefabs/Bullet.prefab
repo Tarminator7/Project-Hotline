@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab683f25cba920438bd4e1352d3d763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  weaponAttributes: {fileID: 11400000, guid: 30c9f7b5acc7d6f4eb1e77ac5e7519d6, type: 2}
 --- !u!1 &7626971086765611095
 GameObject:
   m_ObjectHideFlags: 0

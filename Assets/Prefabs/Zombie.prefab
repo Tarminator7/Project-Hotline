@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4710130133367719026}
   - component: {fileID: 7907889850168422289}
   - component: {fileID: -1949631065865039326}
-  - component: {fileID: 7977730089791455759}
+  - component: {fileID: 5569510125433508381}
   - component: {fileID: 3307958478769176766}
   - component: {fileID: -4989955581143025798}
+  - component: {fileID: -3784272742895433254}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -127,9 +128,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a902013d34c5384b81bf08f1a3be198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+  currentHealth: 10
+  maximumHealth: 10
   OnDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5569510125433508381}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7907889850168422289}
+        m_TargetAssemblyTypeName: UnityEngine.CircleCollider2D, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7289830433743127998, guid: 6c34415f658f3334aa7f546d733decf2, type: 3}
+        m_TargetAssemblyTypeName: StageVictoryCondition, Assembly-CSharp
+        m_MethodName: OnEnemyDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -3784272742895433254}
+        m_TargetAssemblyTypeName: EnemyDestroy, Assembly-CSharp
+        m_MethodName: DestroyEnemy
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -139,7 +190,7 @@ MonoBehaviour:
   OnGameOver:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7977730089791455759
+--- !u!114 &5569510125433508381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +199,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5809860270924544491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02f3798e2d4c6f408988ac7f87366dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 79ec5c1644a4eab4e9dc0913f06fd52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyAttributes: {fileID: 11400000, guid: 1629bc39597a08c4fb4b454511b5a5af, type: 2}
@@ -178,6 +229,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
   enemyAttributes: {fileID: 11400000, guid: 1629bc39597a08c4fb4b454511b5a5af, type: 2}
+--- !u!114 &-3784272742895433254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809860270924544491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c070c495638ba184d84e2669bc784beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDestroy
 --- !u!1 &8624123465959306850
 GameObject:
   m_ObjectHideFlags: 0

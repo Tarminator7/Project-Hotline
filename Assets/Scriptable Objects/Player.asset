@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttributes
   <MovementSpeed>k__BackingField: 5
-  <InvincibilityDuration>k__BackingField: 3
+  <InvincibilityDuration>k__BackingField: 2
   <FlashColor>k__BackingField: {r: 1, g: 1, b: 1, a: 0.50980395}
-  <NumberOfFlashes>k__BackingField: 10
+  <NumberOfFlashes>k__BackingField: 5

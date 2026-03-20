@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponAttributes
   <BulletPrefab>k__BackingField: {fileID: 5415441339481380115, guid: 5bd7533d1afc7884ab682313f6a10eee, type: 3}
-  <WeaponDamage>k__BackingField: 0
+  <WeaponDamage>k__BackingField: 5
   <BulletSpeed>k__BackingField: 12
   <TimeBetweenShots>k__BackingField: 0.1
   <BulletDespawnTimer>k__BackingField: 3

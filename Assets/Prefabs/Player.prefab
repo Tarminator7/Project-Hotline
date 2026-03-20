@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 1417704502528873264}
   - component: {fileID: -418296538318067869}
   - component: {fileID: 8537916836595951308}
+  - component: {fileID: 2583145567975960774}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -217,7 +218,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5638186614332602543
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -454,3 +455,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInvincibility
   playerAttributes: {fileID: 11400000, guid: 50dea69a80eab154c98196d41c5c618d, type: 2}
+--- !u!114 &2583145567975960774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251846473657518298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346651e923bbf0c45bfed640d36e7063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageVictoryCondition

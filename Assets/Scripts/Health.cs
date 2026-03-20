@@ -54,35 +54,6 @@ public class Health : MonoBehaviour
         }
     }
 
-    //public void SetHealth(float amount)
-    //{
-    //    currentHealth = amount;
-
-    //    if (currentHealth > maximumHealth)
-    //    {
-    //        currentHealth = maximumHealth;
-    //    }
-
-    //    OnHealthChanged.Invoke();
-    //}
-
-    //public void AddHealth(float amountToAdd)
-    //{
-    //    if (currentHealth == maximumHealth)
-    //    {
-    //        return;
-    //    }
-
-    //    currentHealth += amountToAdd;
-
-    //    OnHealthChanged.Invoke();
-
-    //    if (currentHealth > maximumHealth)
-    //    {
-    //        currentHealth = maximumHealth;
-    //    }
-    //}
-
     public IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1);
