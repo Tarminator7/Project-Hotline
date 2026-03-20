@@ -7072,6 +7072,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
+      propertyPath: currentHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
+      propertyPath: maximumHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
       propertyPath: OnDied.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1830432937}

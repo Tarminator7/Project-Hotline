@@ -22,20 +22,19 @@ public class StageVictoryCondition : MonoBehaviour
     }
 }
 
-bool AllEnemiesDefeated()
-{
-    return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
-}
+    bool AllEnemiesDefeated()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length == 0;
+    }
 
-   private void LoadNewScene()
-{
-    sceneSettings.SceneNumber++; // Grows the scene number
-     Debug.Log("SceneNumber nyt: " + sceneSettings.SceneNumber);
-     int maxScenes = SceneManager.sceneCountInBuildSettings;
+    private void LoadNewScene()
+    {
+        sceneSettings.SceneNumber++; // Grows the scene number
+        // Debug.Log("SceneNumber nyt: " + sceneSettings.SceneNumber);
+        int maxScenes = SceneManager.sceneCountInBuildSettings;
 
-    SceneManager.LoadScene(sceneSettings.SceneNumber); // Loads the new scene based on the updated scene number
+        SceneManager.LoadScene(sceneSettings.SceneNumber); // Loads the new scene based on the updated scene number
 
-    // Shop: SceneManager.LoadScene("ShopScene"); Replace "ShopScene" with the actual name of your shop scene when it is ready.
-
-}
+        // Shop: SceneManager.LoadScene("ShopScene"); Replace "ShopScene" with the actual name of your shop scene when it is ready.
+    }
 }

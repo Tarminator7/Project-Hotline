@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 {
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void ExitGame()
