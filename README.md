@@ -1,6 +1,9 @@
 # To-Do List:
-- Main Menu
 - Pause menu
+- Imrpvoe Game Over menu
+- Improve StageVictoryCondition script
+- Add The End scene
+
 
 # Top-down shooter plan
 
