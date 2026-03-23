@@ -29,12 +29,13 @@ public class StageVictoryCondition : MonoBehaviour
 
     private void LoadNewScene()
     {
-        sceneSettings.SceneNumber++; // Grows the scene number
-        // Debug.Log("SceneNumber nyt: " + sceneSettings.SceneNumber);
-        int maxScenes = SceneManager.sceneCountInBuildSettings;
+        // Disabled for now until it's fixed
+        //sceneSettings.SceneNumber++; // Grows the scene number
+        //// Debug.Log("SceneNumber nyt: " + sceneSettings.SceneNumber);
+        //int maxScenes = SceneManager.sceneCountInBuildSettings;
+        //SceneManager.LoadScene(sceneSettings.SceneNumber); // Loads the new scene based on the updated scene number
+        //// Shop: SceneManager.LoadScene("ShopScene"); Replace "ShopScene" with the actual name of your shop scene when it is ready.
 
-        SceneManager.LoadScene(sceneSettings.SceneNumber); // Loads the new scene based on the updated scene number
-
-        // Shop: SceneManager.LoadScene("ShopScene"); Replace "ShopScene" with the actual name of your shop scene when it is ready.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Temporary solution
     }
 }

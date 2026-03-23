@@ -1095,6 +1095,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
+      propertyPath: OnGameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1913276804}
+    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
+      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1913276805}
+    - target: {fileID: -8754535903578295317, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
+      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateHealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2096595408477237299, guid: 65c81bf6a61ba4f4eaf6f0f49565ce2f, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -1601,7 +1613,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2092871868321908098, guid: bb9b801813fbc6d4fba336d75f24e24a, type: 3}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2623546807395796835, guid: bb9b801813fbc6d4fba336d75f24e24a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2623546807395796835, guid: bb9b801813fbc6d4fba336d75f24e24a, type: 3}
       propertyPath: cameraFollowTarget
@@ -1609,11 +1625,11 @@ PrefabInstance:
       objectReference: {fileID: 265529590}
     - target: {fileID: 7117135434715196835, guid: bb9b801813fbc6d4fba336d75f24e24a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.35899
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117135434715196835, guid: bb9b801813fbc6d4fba336d75f24e24a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05587
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117135434715196835, guid: bb9b801813fbc6d4fba336d75f24e24a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3251,6 +3267,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5200d22c69640dc4781f331f06117b7c, type: 3}
+--- !u!1 &1913276804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7408043036865468145, guid: 5200d22c69640dc4781f331f06117b7c, type: 3}
+  m_PrefabInstance: {fileID: 1913276803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1913276805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8664519546114085692, guid: 5200d22c69640dc4781f331f06117b7c, type: 3}
+  m_PrefabInstance: {fileID: 1913276803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae28d5c839c875e4f86b094cd07f0347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBarUI
 --- !u!1001 &1983216194
 PrefabInstance:
   m_ObjectHideFlags: 0
