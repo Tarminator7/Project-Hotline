@@ -4,6 +4,7 @@
 - Imrpvoe Game Over menu
 - Improve StageVictoryCondition script
 - Add The End scene
+- Check Invincibility script
 
 ### Secondary priority:
 - New weapon + bullet prefab + stats (scriptable objects)
