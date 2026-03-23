@@ -1,9 +1,9 @@
 # To-Do List:
 ### Main priority:
-- Pause menu
-- Imrpvoe Game Over menu
+- Improve Pause menu
+- Improve Game Over menu
 - Improve StageVictoryCondition script
-- Add The End scene
+- Improve The End / last scene
 - Check Invincibility script
 
 ### Secondary priority:
