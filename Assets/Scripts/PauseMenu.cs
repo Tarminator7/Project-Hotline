@@ -12,28 +12,29 @@ public class PauseMenu : MonoBehaviour
     public GameObject container;
     public UnityEvent OnPause;
     public UnityEvent OnResume;
+    public UnityEvent OnPlayerReset;
 
-    //void Update()
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            container.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    //private void OnEnable()
     //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        container.SetActive(true);
-    //        Time.timeScale = 0;
-    //    }
+    //    pause.action.Enable();
+    //    pause.action.performed += OnPausePerformed;
     //}
 
-    private void OnEnable()
-    {
-        pause.action.Enable();
-        pause.action.performed += OnPausePerformed;
-    }
-
-    private void OnPausePerformed(InputAction.CallbackContext context)
-    {
-        container.SetActive(true);
-        Time.timeScale = 0;
-        OnPause.Invoke();
-    }
+    //private void OnPausePerformed(InputAction.CallbackContext context)
+    //{
+    //    container.SetActive(true);
+    //    Time.timeScale = 0;
+    //    OnPause.Invoke();
+    //}
 
     public void ResumeButton()
     {
@@ -47,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
         container.SetActive(false);
         Time.timeScale = 1;
+        OnPlayerReset.Invoke();
     }
 
     public void ExitGame()

@@ -538,6 +538,9 @@ MonoBehaviour:
   OnResume:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerReset:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &771424630
 MonoBehaviour:
   m_ObjectHideFlags: 0

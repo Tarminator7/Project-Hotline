@@ -15,7 +15,7 @@ MonoBehaviour:
   <Speed>k__BackingField: 4
   <RotationSpeed>k__BackingField: 300
   <PlayerAwarenessDistance>k__BackingField: 5
-  <EnemyDamageAmount>k__BackingField: 10
+  <EnemyDamageAmount>k__BackingField: 20
   <ObstacleCheckCircleRadius>k__BackingField: 0.45
   <ObstacleCheckDistance>k__BackingField: 1
   <ObstacleLayerMask>k__BackingField:
